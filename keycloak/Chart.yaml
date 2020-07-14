@@ -21,3 +21,13 @@ version: 0.1.0
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 appVersion: 1.16.0
+
+dependencies:
+- name: crunchydata-postgres-operator
+  version: "0.1.0"
+  repository: "file://../databases/crunchydata-postgres-operator"
+  condition: databases.crunchydata
+- name: zalando-postgres-operator
+  version: "1.5.0"
+  repository: "file://../databases/zalando-postgres-operator"
+  condition: databases.zalando

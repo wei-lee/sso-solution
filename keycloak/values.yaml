@@ -83,9 +83,10 @@ database:
   username: sso
   password: postgres
 
-postgres-operator:
+crunchydata-postgres-operator:
   disable_fsgroup: "true"
   pgo_client_container_install: "true"
+  pgo_cluster_admin: "true"
   storage1_access_mode: "ReadWriteOnce"
   storage2_access_mode: "ReadWriteOnce"
   storage5_class: "gp2"
@@ -93,3 +94,7 @@ postgres-operator:
   storage7_class: "gp2"
   storage8_class: "gp2"
   storage9_class: "gp2"
+
+databases:
+  crunchydata: true
+  zalando: false
