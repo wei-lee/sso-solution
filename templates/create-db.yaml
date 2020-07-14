@@ -1,0 +1,49 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pgo-client
+  annotations:
+    helm.sh/hook: post-install
+    helm.sh/hook-weight: "0"
+    helm.sh/hook-delete-policy: hook-succeeded,before-hook-creation
+spec:
+  template:
+    spec:
+      dnsPolicy: ClusterFirst
+      restartPolicy: OnFailure
+      containers:
+      - name: client
+        image: "registry.developers.crunchydata.com/crunchydata/pgo-client:centos7-4.4.0-beta.2"
+        imagePullPolicy: IfNotPresent
+        command: ["pgo", "create", "cluster", {{ .Values.database.name | quote }}, "--username={{ .Values.database.username }}", "--password={{ .Values.database.password }}"]
+        env:
+        - name: PGO_APISERVER_URL
+          value: https://postgres-operator:8443
+        - name: PGO_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: PGOUSERNAME
+          valueFrom:
+            secretKeyRef:
+              name: pgouser-admin
+              key: username
+        - name: PGOUSERPASS
+          valueFrom:
+            secretKeyRef:
+              name: pgouser-admin
+              key: password
+        - name: PGO_CA_CERT
+          value: "/etc/pgo/certificates/tls.crt"
+        - name: PGO_CLIENT_CERT
+          value: "/etc/pgo/certificates/tls.crt"
+        - name: PGO_CLIENT_KEY
+          value: "/etc/pgo/certificates/tls.key"
+        volumeMounts:
+        - mountPath: "/etc/pgo/certificates"
+          name: certificates
+      volumes:
+      - name: certificates
+        secret:
+          secretName: pgo.tls
