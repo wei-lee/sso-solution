@@ -10,7 +10,8 @@ This is a Helm chart that can install Keycloak with a Postgres database. The Pos
 # Usage
 
 1. Login to the cluster as a cluster-admin user using `oc`.
-2. Then run the following commands:
+2. Clone the repo and cd into it
+3. Then run the following commands:
    ```
    oc new-project keycloak
    # You can either use the crunchdata postgres operator by running the following cmd:
