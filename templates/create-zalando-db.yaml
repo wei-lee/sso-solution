@@ -2,9 +2,10 @@
 apiVersion: "acid.zalan.do/v1"
 kind: postgresql
 metadata:
-  name: acid-minimal-cluster
+  name: {{ .Values.zalandoPostgres.name }}
+  namespace: {{ .Release.Namespace }}
 spec:
-  teamId: "acid"
+  teamId: "sso"
   volume:
     size: 1Gi
   numberOfInstances: 1
@@ -12,11 +13,8 @@ spec:
     sso:  # database owner
     - superuser
     - createdb
-    foo_user: []  # role for application foo
   databases:
     sso: sso  # dbname: owner
-  preparedDatabases:
-    bar: {}
   postgresql:
     version: "12"
 {{ end }}

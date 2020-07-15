@@ -41,6 +41,30 @@ rules:
   - services
   verbs:
   - create
+  - patch
+  - get
+  - list
+  - delete
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+  - patch
+  - update
+  - watch
+  - create
+# to check nodes for node readiness label
+- apiGroups:
+    - ""
+  resources:
+    - nodes
+  verbs:
+    - get
+    - list
+    - watch
 # to run privileged pods
 - apiGroups:
   - extensions

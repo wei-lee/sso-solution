@@ -36,7 +36,7 @@ configGeneral:
   # period between consecutive repair requests
   repair_period: 5m
   # period between consecutive sync requests
-  resync_period: 30m
+  resync_period: "987654321s"
   # can prevent certain cases of memory overcommitment
   # set_memory_request_to_limit: "false"
 
@@ -55,7 +55,7 @@ configUsers:
 
 configKubernetes:
   # default DNS domain of K8s cluster where operator is running
-  cluster_domain: apps.cluster-ocpdemo-e6dc.ocpdemo-e6dc.example.opentlc.com
+  cluster_domain: cluster.local
   # additional labels assigned to the cluster objects
   cluster_labels: application:spilo
   # label assigned to Kubernetes objects created by the operator

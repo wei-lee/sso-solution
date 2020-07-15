@@ -42,6 +42,11 @@ rules:
   - configmaps
   verbs:
   - get
+  - list
+  - patch
+  - update
+  - watch
+  - create
 # to send events to the CRs
 - apiGroups:
   - ""
@@ -135,6 +140,7 @@ rules:
   - get
   - patch
   - update
+  - list
 # to CRUD the StatefulSet which controls the Postgres cluster instances
 - apiGroups:
   - apps

@@ -95,6 +95,9 @@ crunchydata-postgres-operator:
   storage8_class: "gp2"
   storage9_class: "gp2"
 
+zalandoPostgres:
+  name: sso-database
+
 databases:
-  crunchydata: false
-  zalando: true
+  crunchydata: true
+  zalando: false

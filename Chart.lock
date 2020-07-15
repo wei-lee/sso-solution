@@ -1,9 +1,0 @@
-dependencies:
-- name: crunchydata-postgres-operator
-  repository: file://../databases/crunchydata-postgres-operator
-  version: 0.1.0
-- name: zalando-postgres-operator
-  repository: file://../databases/zalando-postgres-operator
-  version: 1.5.0
-digest: sha256:acb7b2323d5e5788bac777dbb92014fa19d00664800f3566c427a5f5c11e6f3c
-generated: "2020-07-14T16:15:09.573716+01:00"
