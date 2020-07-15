@@ -22,11 +22,11 @@ configGeneral:
   # update only the statefulsets without immediately doing the rolling update
   enable_lazy_spilo_upgrade: "false"
   # start any new database pod without limitations on shm memory
-  enable_shm_volume: "true"
+  # enable_shm_volume: "true"
   # etcd connection string for Patroni. Empty uses K8s-native DCS.
   etcd_host: ""
   # Select if setup uses endpoints (default), or configmaps to manage leader (DCS=k8s)
-  # kubernetes_use_configmaps: "false"
+  kubernetes_use_configmaps: "true"
   # Spilo docker image
   docker_image: registry.opensource.zalan.do/acid/spilo-12:1.6-p3
   # max number of instances in Postgres cluster. -1 = no limit
@@ -55,7 +55,7 @@ configUsers:
 
 configKubernetes:
   # default DNS domain of K8s cluster where operator is running
-  cluster_domain: cluster.local
+  cluster_domain: apps.cluster-ocpdemo-e6dc.ocpdemo-e6dc.example.opentlc.com
   # additional labels assigned to the cluster objects
   cluster_labels: application:spilo
   # label assigned to Kubernetes objects created by the operator

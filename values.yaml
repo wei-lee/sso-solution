@@ -96,5 +96,5 @@ crunchydata-postgres-operator:
   storage9_class: "gp2"
 
 databases:
-  crunchydata: true
-  zalando: false
+  crunchydata: false
+  zalando: true

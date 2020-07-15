@@ -1,4 +1,4 @@
----
+{{ if .Values.databases.crunchydata }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -48,3 +48,4 @@ spec:
       - name: certificates
         secret:
           secretName: pgo.tls
+{{ end }}
